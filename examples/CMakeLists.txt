@@ -1,0 +1,2 @@
+add_executable(tracker_example tracker_example.cpp)
+target_link_libraries(tracker_example Tracker_static)
