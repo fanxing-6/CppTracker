@@ -13,11 +13,6 @@ set(PROJECT_NAME "CppTracker")
 # 重新定义项目，包括版本号
 project(${PROJECT_NAME} VERSION 1.1.1.1)
 
-# 提供选项以构建共享库
-option(BUILD_TRACKER_SHARED_LIBS "build shared library" ON)
-
-# 提供选项以构建静态库
-option(BUILD_TRACKER_STATIC_LIBS "build static library" ON)
 
 # 提供选项以构建示例，当前默认打开
 option(BUILD_TRACKER_EXAMPLES "build examples" OFF)
@@ -25,19 +20,8 @@ option(BUILD_TRACKER_EXAMPLES "build examples" OFF)
 # 提供选项以构建单元测试，当前默认打开
 option(BUILD_TRACKER_TEST "build unittest" ON)
 
-# 提供选项以针对/MT（静态多线程运行时）进行构建
-option(BUILD_TRACKER_FOR_MT "build for /MT" ON)
-
 # 设置编译器标志来启用多处理器编译
 set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /MP")
-
-# 如果选中针对/MT进行构建，则设置相应的编译器标志
-if (BUILD_TRACKER_FOR_MT)
-    set(CMAKE_C_FLAGS_DEBUG "${CMAKE_C_FLAGS_DEBUG} /MTd")
-    set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS_DEBUG} /MTd")
-    set(CMAKE_C_FLAGS_RELEASE "${CMAKE_C_FLAGS_RELEASE} /MT")
-    set(CMAKE_CXX_FLAGS_RELEASE "${CMAKE_CXX_FLAGS_RELEASE} /MT")
-endif ()
 
 # 定义项目需要链接的库
 set(LIBS ${LIBS} winmm iphlpapi ws2_32 dbghelp)

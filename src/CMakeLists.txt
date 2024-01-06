@@ -12,20 +12,11 @@ message(STATUS "libs ${LIBS}")
 add_compile_definitions(SPDLOG_ACTIVE_LEVEL=SPDLOG_LEVEL_TRACE)
 
 
-
-
 if(NOT spdlog_FOUND)
     message(WARNING "spdlog not found!")
 else()
     message(STATUS "Found spdlog on: " ${spdlog_DIR})
 endif(NOT spdlog_FOUND)
 
-if (BUILD_TRACKER_SHARED_LIBS)
-    add_library(${MODULE_NAME} SHARED ${TRACKER_SRCS})
-    target_link_libraries(${MODULE_NAME} PRIVATE ${LIBS} spdlog::spdlog)
-endif ()
-
-if (BUILD_TRACKER_STATIC_LIBS)
-    add_library(${MODULE_NAME}_static STATIC ${TRACKER_SRCS})
-    target_link_libraries(${MODULE_NAME} PRIVATE ${LIBS} spdlog::spdlog)
-endif ()
+add_library(${MODULE_NAME} SHARED ${TRACKER_SRCS})
+target_link_libraries(${MODULE_NAME} PRIVATE ${LIBS} spdlog::spdlog)

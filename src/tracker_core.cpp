@@ -1,7 +1,9 @@
-#include "tracker_core.h"
+#include "spdlog/spdlog.h"
 #include "spdlog/sinks/basic_file_sink.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
-#include "spdlog/spdlog.h"
+#include "tracker_core.h"
+
+
 
 Tracker::Tracker(const std::string& work_dir)
 {
