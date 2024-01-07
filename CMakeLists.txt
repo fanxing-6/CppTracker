@@ -50,8 +50,11 @@ else ()
     add_definitions(-DNDEBUG)
 endif ()
 
+find_package(unofficial-sqlite3 CONFIG REQUIRED)
 
-
+find_package(SqliteOrm CONFIG REQUIRED)
+find_package(spdlog CONFIG REQUIRED)
+find_package(unofficial-sqlite3 CONFIG REQUIRED)
 # 添加子目录src到项目
 add_subdirectory(src)
 
