@@ -50,8 +50,7 @@ else ()
     add_definitions(-DNDEBUG)
 endif ()
 
-# 查找并引入spdlog库
-find_package(spdlog CONFIG REQUIRED)
+
 
 # 添加子目录src到项目
 add_subdirectory(src)

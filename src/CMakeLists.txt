@@ -11,7 +11,8 @@ message(STATUS "libs ${LIBS}")
 
 add_compile_definitions(SPDLOG_ACTIVE_LEVEL=SPDLOG_LEVEL_TRACE)
 
-
+# 查找并引入spdlog库
+find_package(spdlog  REQUIRED)
 if(NOT spdlog_FOUND)
     message(WARNING "spdlog not found!")
 else()
