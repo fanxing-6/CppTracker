@@ -4,6 +4,7 @@ set(TRACKER_SRCS
         tracker.cpp
         tracker_core.cpp
         database/database.cpp
+        report/http_report.cpp
 )
 
 set(MODULE_NAME "Tracker")

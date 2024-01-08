@@ -4,12 +4,15 @@ project(TrackerTest)
 set(TEST_SRC
         test_db.cpp
         test.cpp
+        test_http.cpp
+        ../src/tracker.cpp
+        ../src/report/http_report.cpp
         ../src/database/database.cpp
-        )
+        ../src/tracker_core.cpp
+)
+
 # 查找并引入spdlog库
-
 find_package(GTest CONFIG REQUIRED)
-
 
 add_executable(tracker_test ${TEST_SRC})
 
