@@ -5,7 +5,7 @@ cmake_minimum_required(VERSION 3.27)
 project(CppTracker)
 
 # 设置C++标准为C++23
-set(CMAKE_CXX_STANDARD 23)
+set(CMAKE_CXX_STANDARD 20)
 
 # 设置项目名称变量
 set(PROJECT_NAME "CppTracker")
@@ -55,6 +55,8 @@ find_package(SqliteOrm CONFIG REQUIRED)
 find_package(spdlog CONFIG REQUIRED)
 find_package(unofficial-sqlite3 CONFIG REQUIRED)
 find_package(Boost)
+find_package(cryptopp CONFIG REQUIRED)
+
 include_directories(${Boost_INCLUDE_DIRS})
 
 # 添加子目录src到项目
