@@ -19,7 +19,7 @@ namespace tracker
         AESImpl& operator=(const AESImpl&) = delete;
 
         void Init(const char* key, size_t size);
-        void UnInit();
+
         std::string Encrypt(const void* input, size_t size);
         std::string Decrypt(const void* input, size_t size);
 
@@ -34,10 +34,7 @@ namespace tracker
         Init(key.data(), key.size());
     }
 
-    AESImpl::~AESImpl()
-    {
-        UnInit();
-    }
+    AESImpl::~AESImpl() = default;
 
     void AESImpl::Init(const char* key, size_t size)
     {
@@ -45,10 +42,6 @@ namespace tracker
         dec_.SetKeyWithIV(reinterpret_cast<const byte*>(key), size, iv_);
     }
 
-    void AESImpl::UnInit()
-    {
-
-    }
 
     std::string AESImpl::Encrypt(const void* input, size_t size)
     {

@@ -56,6 +56,7 @@ find_package(spdlog CONFIG REQUIRED)
 find_package(unofficial-sqlite3 CONFIG REQUIRED)
 find_package(Boost)
 find_package(cryptopp CONFIG REQUIRED)
+find_package(nlohmann_json CONFIG REQUIRED)
 
 include_directories(${Boost_INCLUDE_DIRS})
 

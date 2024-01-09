@@ -11,6 +11,8 @@ set(TEST_SRC
         ../src/database/database.cpp
         ../src/tracker_core.cpp
         ../src/crypt/crypt.cpp
+        ../src/common/common_service.cpp
+        test_common_service.cpp
 )
 
 # 查找并引入spdlog库
@@ -20,7 +22,7 @@ add_executable(tracker_test ${TEST_SRC})
 
 # 确保链接到GoogleTest的库
 target_link_libraries(tracker_test Tracker GTest::gtest GTest::gtest_main GTest::gmock GTest::gmock_main spdlog::spdlog
-        sqlite_orm::sqlite_orm unofficial::sqlite3::sqlite3 cryptopp::cryptopp)
+        sqlite_orm::sqlite_orm unofficial::sqlite3::sqlite3 cryptopp::cryptopp nlohmann_json::nlohmann_json)
 
 # 添加测试
 add_test(NAME TrackerTests COMMAND tracker_test)
