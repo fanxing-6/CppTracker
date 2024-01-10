@@ -13,6 +13,8 @@ set(TEST_SRC
         ../src/crypt/crypt.cpp
         ../src/common/common_service.cpp
         test_common_service.cpp
+        ../src/report/tracker_report.cpp
+        ../src/context/context.cpp
 )
 
 # 查找并引入spdlog库

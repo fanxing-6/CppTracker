@@ -36,20 +36,42 @@ int32_t Tracker_Start(Tracker* tracker, const TrackerConfig* config)
     }
     Tracker::Config tracker_config;
 
-    if (config->host) { tracker_config.host = config->host; }
-    if (config->topic) { tracker_config.topic = config->topic; }
-    if (config->user_id) { tracker_config.user_id = config->user_id; }
-    if (config->version) { tracker_config.version = config->version; }
-    if (config->custom_data) { tracker_config.custom_data = config->custom_data; }
-
-    return Tracker::Start(tracker_config);
+    if (config->host)
+    {
+        tracker_config.host = config->host;
+    }
+    if (config->port)
+    {
+        tracker_config.port = config->port;
+    }
+    if (config->topic)
+    {
+        tracker_config.topic = config->topic;
+    }
+    if (config->user_id)
+    {
+        tracker_config.user_id = config->user_id;
+    }
+    if (config->app_version)
+    {
+        tracker_config.app_version = config->app_version;
+    }
+    if (config->app_name)
+    {
+        tracker_config.app_name = config->app_name;
+    }
+    if (config->custom_data)
+    {
+        tracker_config.custom_data = config->custom_data;
+    }
+    return tracker->Start(tracker_config);
 }
 
-int32_t Tracker_Report(Tracker* tracker, const char* report_data, uint32_t priority)
+int32_t Tracker_Report(Tracker* tracker, const char* title, const char* report_data, uint32_t priority)
 {
     if (!tracker || !report_data)
     {
         return TrackerResult::kTrackerInvalidParam;
     }
-    return Tracker::Report(report_data, priority);
+    return tracker->Report(title, report_data, priority);
 }

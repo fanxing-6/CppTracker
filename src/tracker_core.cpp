@@ -3,10 +3,13 @@
 #include "spdlog/sinks/stdout_color_sinks.h"
 #include "tracker_core.h"
 
+#include "common/common_service.h"
+#include "context/context.h"
 
 
 Tracker::Tracker(const std::string& work_dir)
 {
+    tracker::Context::GetGlobalContext().Start();
     InitWorkPath_(work_dir);
     InitLogger_();
 
@@ -17,11 +20,29 @@ Tracker::~Tracker() = default;
 
 TrackerResult Tracker::Start(const Config& config)
 {
+    tracker::CommonService common_service;
+    common_service.host = config.host;
+    common_service.port = config.port;
+    common_service.topic = config.topic;
+    common_service.user_id = config.user_id;
+    common_service.app_version = config.app_version;
+    common_service.app_name = config.app_name;
+    common_service.custom_data = nlohmann::json::parse(config.custom_data);
+
+    tracker_report_ = std::make_unique<tracker::TrackerReport>(
+        logger_, std::move(common_service), work_path_.string());
+    tracker_report_->Start();
     return TrackerResult::kTrackerOk;
 }
 
-TrackerResult Tracker::Report(const std::string& report_data, uint32_t priority)
+TrackerResult Tracker::Report(std::string title, const std::string& report_data, uint32_t priority)
 {
+    tracker::TrackerData tracker_data;
+    tracker_data.title = std::move(title);
+    tracker_data.data = report_data;
+    tracker_data.priority = priority;
+    tracker_report_->InsertData(tracker_data);
+
     return TrackerResult::kTrackerOk;
 }
 

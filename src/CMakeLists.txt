@@ -15,6 +15,7 @@ set(TRACKER_SRCS
         report/tracker_report.cpp
         crypt/crypt.cpp
         common/common_service.cpp
+        context/context.cpp
 )
 
 set(MODULE_NAME "Tracker")
