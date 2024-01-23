@@ -1,5 +1,4 @@
 #include "boost/asio/deadline_timer.hpp"
-#include "boost/asio/io_service.hpp"
 #include "tracker_report.h"
 #include <src/crypt/crypt.h>
 #include <src/database/database.h>
@@ -31,11 +30,11 @@ namespace tracker
         std::string GenReportData_(const std::vector<TrackerDb::Data>& datas);
         bool ReportData_(const std::string& data);
 
-    private:
+
         std::shared_ptr<spdlog::logger> logger_;
+        CommonService common_service_;
         std::string work_dir_;
         std::unique_ptr<TrackerDb> db_;
-        CommonService common_service_;
         std::unique_ptr<tracker::Crypt> crypt_;
         std::unique_ptr<boost::asio::deadline_timer> timer_;
         std::vector<TrackerDb::Data> data_caches_;
@@ -74,7 +73,7 @@ namespace tracker
         std::string key = AEScrypt::GetKey("tracker_salt", "tracker_password");
         crypt_ = std::make_unique<AEScrypt>(key);
         SPDLOG_LOGGER_INFO(logger_, "tracker report init success");
-        Context::GetGlobalContext().GetReportStrand().post([this]() { Init_(); });
+        Context::GetGlobalContext().GetReportStrand().post([this] { Init_(); });
     }
 
     TrackerReportImpl::~TrackerReportImpl() = default;
@@ -100,7 +99,7 @@ namespace tracker
     void TrackerReportImpl::InsertData(const TrackerData& data)
     {
         Context::GetGlobalContext().GetReportStrand().post(
-            [this,data]() { db_->InsertData(MakeDbData_(data)); }
+            [this,data] { db_->InsertData(MakeDbData_(data)); }
         );
     }
 
@@ -144,7 +143,7 @@ namespace tracker
                 logger_->error("TrackerReportImpl::NextCycle_ error: {}", ec.message());
                 return;
             }
-            Context::GetGlobalContext().GetReportStrand().post([this]() { ReportCache_(); });
+            Context::GetGlobalContext().GetReportStrand().post([this] { ReportCache_(); });
         });
     }
 

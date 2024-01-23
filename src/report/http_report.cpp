@@ -8,6 +8,8 @@
 
 #include "http_report.h"
 
+#include <utility>
+
 namespace beast = boost::beast;
 namespace http = beast::http;
 namespace net = boost::asio;
@@ -17,7 +19,7 @@ namespace tracker
 {
     static boost::asio::io_context ioc;
 
-    HttpReporter::HttpReporter(std::shared_ptr<spdlog::logger> logger) : logger_(logger)
+    HttpReporter::HttpReporter(std::shared_ptr<spdlog::logger> logger) : logger_(std::move(logger))
     {
     }
 

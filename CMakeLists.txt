@@ -15,7 +15,7 @@ project(${PROJECT_NAME} VERSION 1.1.1.1)
 
 
 # 提供选项以构建示例，当前默认打开
-option(BUILD_TRACKER_EXAMPLES "build examples" OFF)
+option(BUILD_TRACKER_EXAMPLES "build examples" ON)
 
 # 提供选项以构建单元测试，当前默认打开
 option(BUILD_TRACKER_TEST "build unittest" ON)

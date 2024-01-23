@@ -21,7 +21,6 @@ namespace tracker
     public:
         using DBStorage = decltype(InitStorge(""));
 
-    public:
         explicit TrackerDbImpl(std::string db_path): db_path_(std::move(db_path))
         {
             storage_ = std::make_unique<DBStorage>(InitStorge(db_path_));
