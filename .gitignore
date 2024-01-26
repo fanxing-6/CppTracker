@@ -2,3 +2,5 @@
 /build/
 /cmake-build-debug/
 /out/
+/CMakeSettings.json
+/Folder.DotSettings.user
