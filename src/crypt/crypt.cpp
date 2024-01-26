@@ -92,9 +92,7 @@ namespace tracker
     {
     }
 
-    AEScrypt::~AEScrypt()
-    {
-    }
+    AEScrypt::~AEScrypt() = default;
 
     std::string AEScrypt::Encrypt(const std::string& input)
     {
