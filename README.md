@@ -12,6 +12,8 @@ CppTracker 是一个专门为客户端应用设计的 C++ 性能监控和数据�
 - **安全与数据处理**：使用 Crypto++ 库加密数据以保障安全性；采用 spdlog 和 nlohmann::json 库进行日志记录和 JSON 数据处理，提高效率和安全性。
 
 ## 安装与配置
+**vcpkg安装使用教程**：https://github.com/microsoft/vcpkg
+
 **依赖安装**：
 使用 vcpkg 安装所需的依赖库：
 ```shell
