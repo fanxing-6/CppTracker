@@ -61,8 +61,9 @@ TEST(HttpTest, TestBeast)
 
 TEST(HttpTest, TestHttpReport)
 {
+    //修改成自己的日志路径
     auto logger = Tracker(R"(D:\AAAMyCode\Clion\CppTracker\cmake-build-debug\TrackerPoint\TestHttpReport)").Logger();
 
     tracker::HttpReporter reporter(logger);
-    reporter.Host("www.baidu.com").Port("8080").Topic("").Body("").Report();
+    reporter.Host("127.0.0.1").Port("5678").Topic(".").Body("你好").Report();
 }
