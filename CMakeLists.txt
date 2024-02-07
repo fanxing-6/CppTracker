@@ -6,13 +6,15 @@ cmake_minimum_required(VERSION 3.27)
 project(CppTracker)
 
 # 设置C++标准为C++23
-set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD 23)
 
 # 设置项目名称变量
 set(PROJECT_NAME "CppTracker")
 
 # 重新定义项目，包括版本号
 project(${PROJECT_NAME} VERSION 1.1.1.1)
+
+add_definitions(-D_WIN32_WINNT=0x0601)
 
 
 # 提供选项以构建示例，当前默认打开

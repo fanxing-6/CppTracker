@@ -7,13 +7,14 @@ set(TEST_SRC
         test.cpp
         test_http.cpp
         test_crypt.cpp
+        test_executor.cpp
+        test_common_service.cpp
         ../src/tracker.cpp
         ../src/report/http_report.cpp
         ../src/database/database.cpp
         ../src/tracker_core.cpp
         ../src/crypt/crypt.cpp
         ../src/common/common_service.cpp
-        test_common_service.cpp
         ../src/report/tracker_report.cpp
         ../src/context/context.cpp
 )
